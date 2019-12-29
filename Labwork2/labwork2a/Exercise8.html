@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function primeNumb(number){
+            var isPrime
+            var arr = []
+            var result = document.getElementById('result_string')
+            if(number<1){
+                result.innerHTML = number + " is not Prime"
+            } else{
+                for(var i =1; i<=number; i++){
+                    if(number%i==0){
+                        arr.push(i)
+                    }
+                }
+                console.log(arr)
+               
+                if(arr.length == 2){
+                    result.innerHTML = number + " is Prime"
+                } else{
+                    result.innerHTML = number + " is not Prime"
+                }
+            }
+          
+         
+         
+           
+        }
+    </script>
+</head>
+<body>
+    <div id="input_section">
+        <input type="text" name="input_string_number" id="input_string_number">
+        <button id="add_string_number" style="width: auto; height: auto;" onclick="primeNumb(document.getElementById('input_string_number').value)">Check</button>
+    </div>
+    <div id="result">
+        <div id="result_string">
+
+        </div>
+    </div>
+</body>
+</html>

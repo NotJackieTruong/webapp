@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var arr = []
+        function reverseNumb(number){
+          number = number + ""
+          var reverseNumb = number.split("").reverse().join(" ")
+          var div = document.createElement('div')
+          div.innerHTML = "Reverse number: "+reverseNumb
+          document.getElementById('result').appendChild(div)
+          
+        }
+ 
+    </script>
+</head>
+<body>
+    <div id="input_section">
+        <input type="text" name="input_string_number" id="input_string_number">
+        <button id="add_string_number" style="width: auto; height: auto;" onclick="reverseNumb(document.getElementById('input_string_number').value)">Add</button>
+    </div>
+    <div id="result">
+
+    </div>
+</body>
+</html>
