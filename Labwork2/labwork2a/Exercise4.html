@@ -7,34 +7,25 @@
     <title>Document</title>
     <script>
         var addArray = []
-        var arrayVal
+        var arrayVal 
         var max
+
         function addNumbtoArray(){
             arrayVal = document.getElementById('input_number').value
-
             addArray.push(parseInt(arrayVal, 10))
-
+            document.getElementById('input_number').value=' '
             
         }
-        function printArray(){
-            for(var i=0; i<addArray.length; i++){
-                console.log(addArray[i])
-            }
-        }
+        // function printArray(){
+        //     for(var i=0; i<addArray.length; i++){
+        //         console.log(addArray[i])
+        //     }
+        // }
 
         function findLargest(){
-            
-            for(var i=0; i<addArray.length; i++){
-                max=addArray[i]
-                if(max<addArray[i+1]){
-                    max=addArray[i+1]
-                    console.log(addArray[i])
-                } else{
-                    max=addArray[i]
-                }
-
-            }
-            window.alert(max)
+            console.log(addArray)
+            var largest = Math.max(...addArray)
+            window.alert(largest)
         }
         
     
@@ -46,9 +37,10 @@
         <h1>Input number array</h1>
         <input type="text" id="input_number" >
         <button onclick="addNumbtoArray()" style="width: 100px; height: 21px;">Input to array</button>
+     
     </div>
     <div class="result_section">
-        <button onclick="findLargest(), printArray()" style="width: 100px; height: auto;">Find largest</button>
+        <button onclick="findLargest()" style="width: 100px; height: auto;">Find largest</button>
     </div>
     
 </body>
