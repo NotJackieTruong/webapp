@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function random(number){
+            var randomNumb = Math.floor(Math.random()*10)+1
+            console.log(randomNumb)
+            if(number==randomNumb){
+                document.getElementById("result").innerHTML="Good work"
+            } else{
+                document.getElementById("result").innerHTML="Not matched"
+
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="input_section">
+        <h1>
+            Input your number here
+        </h1>
+        <input type="text" id="input_number_section" placeholder="Your number...">
+        <button onclick="random(document.getElementById('input_number_section').value)" style="width: 50px; height: 21px;">Input</button>
+
+    </div>
+    <div class="output_section">
+        <h1>
+            Result: <span id="result"></span>
+        </h1>
+    </div>
+</body>
+</html>

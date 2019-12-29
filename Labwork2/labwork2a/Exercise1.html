@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var currentDate
+        var currentTime
+        function getDate(){
+            currentDate = new Date()
+            var formattedDate = currentDate.getDate()+"/"+(currentDate.getMonth()+1)+"/"+ currentDate.getFullYear();
+            
+            var day = currentDate.toLocaleDateString('en', {weekday: "long"})
+            console.log(currentDate.getDay())
+            // get time
+            var timeHour= currentDate.getHours()
+            var sthing
+            if(0<timeHour<12){
+                sthing="AM"
+            } else if(12<timeHour<24){
+                sthing="PM"
+            }
+            currentTime = timeHour+" "+sthing+" :"+currentDate.getMinutes()+":"+currentDate.getSeconds()
+            
+            // show the date and time
+            document.getElementById("current_date").innerHTML = day
+            document.getElementById("current_time").innerHTML = currentTime 
+        }
+
+                
+    
+    </script>
+</head>
+<body onload="getDate()">
+    <div class="current_date">
+        <h1>Today is: <span id="current_date"></span> </h1>
+        <h1>Current Time is: <span id="current_time"></span></h1>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <style>
+            html,body{
+                height: 100%;
+                padding:0;
+                margin: 0;
+            }
+            div{
+                border: 1px solid blue;
+            }
+        
+            #header, #footer{
+                background-color: lightblue;
+                width: 100%;
+        
+            }
+            #header{
+                height: 20%;
+                float: top;
+            }
+            #footer{
+                height: 15%;
+                float: right;
+            }
+            #left_part, #right_part{
+                height: 100%;
+             
+            }
+            #left_part{
+                width: 24.55%;
+                background-color: lightgreen;
+                float: left;
+        
+            }
+            #right_part{
+                width:75%;
+                background-color: lightcoral;
+                float: right;
+                display: flex;
+                
+            }
+            #left_part div{
+                margin: 10px;
+                cursor: pointer;
+            }
+            #left_part div:hover{
+                background-color: aqua;
+            }
+            div.imageDiv{
+                height: 150px;
+                width: 150px;
+                margin: 10px;
+                visibility: hidden;
+            }
+            div.imageDiv2{
+                height: 150px;
+                width: 150px;
+                margin: 10px;
+                visibility: hidden;
+            }
+            #img1, #img2, #img3, #img4{
+                height: 150px;
+                width: 150px;
+            }
+        
+        </style>
+    </head>
+    <body>
+        <div id="header"></div>
+        <div id="left_part">
+            <div class="Something1" onclick="show('Something1')">Something1</div>
+            <div class="Something2" onclick="show('Something2')">Something2</div>
+            <div class="about">About</div>
+        </div>
+        <div id="right_part">
+            <div class="imageDiv"><img id="img1" src="./images/DxKr8dIX4AAOH3N.jpg" alt=""></div>
+            <div class="imageDiv"><img id="img2" src="./images/DxKsno8X4AEx1fe.jpg" alt=""></div>
+            <div class="imageDiv2"><img id="img3" src="./images/snoop-dogg.jpg" alt=""></div>
+            <div class="imageDiv2"><img src="./images/1565618905-150-de-che-kinh-doanh-ty-do-it-ai-biet-toi-cua-rapper-song-ca-cung-son-tung-mtp-a1-1565611826-width801height451.jpg" alt="" id="img4"></div>
+            
+        </div>
+        <div id="footer"></div>
+        
+        <script>
+            
+            function show(Somehthing){
+                
+                if(Somehthing=='Something1'){
+                    var element = document.getElementsByClassName("imageDiv")
+                    for(var i=0; i<element.length; i++){
+                        element[i].style.visibility="visible";
+                    }
+                } else if(Somehthing=='Something2'){
+                    var element = document.getElementsByClassName("imageDiv2")
+                    for(var i=0; i<element.length; i++){
+                        element[i].style.visibility="visible";
+                    }
+                }
+               
+               
+            }
+
+        
+        
+        </script>
+    </body>
+</html>

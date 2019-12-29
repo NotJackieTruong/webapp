@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var addArray = []
+        var arrayVal
+        var max
+        function addNumbtoArray(){
+            arrayVal = document.getElementById('input_number').value
+
+            addArray.push(parseInt(arrayVal, 10))
+
+            
+        }
+        function printArray(){
+            for(var i=0; i<addArray.length; i++){
+                console.log(addArray[i])
+            }
+        }
+
+        function findLargest(){
+            
+            for(var i=0; i<addArray.length; i++){
+                max=addArray[i]
+                if(max<addArray[i+1]){
+                    max=addArray[i+1]
+                    console.log(addArray[i])
+                } else{
+                    max=addArray[i]
+                }
+
+            }
+            window.alert(max)
+        }
+        
+    
+    
+    </script>
+</head>
+<body>
+    <div class="input_section">
+        <h1>Input number array</h1>
+        <input type="text" id="input_number" >
+        <button onclick="addNumbtoArray()" style="width: 100px; height: 21px;">Input to array</button>
+    </div>
+    <div class="result_section">
+        <button onclick="findLargest(), printArray()" style="width: 100px; height: auto;">Find largest</button>
+    </div>
+    
+</body>
+</html>
