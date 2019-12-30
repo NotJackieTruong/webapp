@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+
+        var addArray = []
+        var arrayVal 
+        var max
+        var secondMax
+        var min
+        var secondMin
+
+        function addNumbtoArray(){
+            arrayVal = document.getElementById('input_number').value
+            addArray.push(parseInt(arrayVal, 10))
+            document.getElementById('input_number').value=' '
+            
+        }
+        // function findLargest(){
+        //     console.log(addArray)
+        //     var largest = Math.max(...addArray)
+        //     window.alert(largest)
+        // }
+        max = -Infinity
+        secondMax = -Infinity
+        min = Infinity
+        secondMin = Infinity
+
+        function findSecondLargest(){
+           
+            for(var i=0; i< addArray.length; i++){
+                if(max<addArray[i]){
+                    secondMax = max
+                    max = addArray[i]
+                } else if(max>addArray[i] && addArray[i]>secondMax){
+                        secondMax = addArray[i]
+                    
+                }
+            }
+            window.alert("Max: "+max + "\n" + "Second max: "+secondMax)
+            console.log(addArray)
+        }
+
+        function findSecondLowest(){
+            for(var i=0; i< addArray.length; i++){
+                if(min>addArray[i]){
+                    secondMin = min
+                    min = addArray[i]
+                } else if(min<addArray[i]&&addArray[i]<secondMin){
+                    secondMin = addArray[i]
+                }
+            }
+            window.alert("Min: "+ min + "\n" + "Second min: "+ secondMin)
+
+        }
+
+
+    </script>
+</head>
+<body>
+      <div class="input_section">
+        <h1>Input number array</h1>
+        <input type="text" id="input_number" >
+        <button onclick="addNumbtoArray()" style="width: 100px; height: 21px;">Input to array</button>
+     
+    </div>
+    <div class="result_section">
+        <button onclick="findSecondLargest()" style="width: 100px; height: auto;">Find Second Largest</button>
+    </div>
+    <div class="result_section">
+        <button onclick="findSecondLowest()" style="width: 100px; height: auto;">Find Second Lowest</button>
+    </div>
+</body>
+</html>
