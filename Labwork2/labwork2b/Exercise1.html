@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html, body{
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+        .signup_form .signup_form_username div, .signup_form_password div, .signup_form_retype div, .button div{
+            display: inline;
+        }
+
+        .signup_form .signup_form_username , .signup_form_password , .signup_form_retype {
+            margin: 0 0 15px 0;
+            width: 100%;
+        }
+
+        .signup_form div.form_username, div.form_password, div.form_retype{
+            width: 126px;
+            padding: 0 15px;
+        }
+        .signup_form #input_username, #input_password{
+            margin-left: 60px;
+        }
+        .signup_form #input_retype{
+            margin-left: 5px;
+        }
+    </style>
+
+    <script>
+        function checkIdentical(){
+            var password = document.getElementById("input_password").value
+            var retype = document.getElementById("input_retype").value
+            var compareString = password.localeCompare(retype)
+            if(compareString ==0){
+                window.alert("Password is identical")
+            } else{
+                window.alert("Password is not identical")
+            }
+        }
+    
+    </script>
+</head>
+<body>
+    <div class="signup_form">
+        <div class="signup_form_title">
+            <h2>Sign up</h2>
+        </div>
+        <form action="">
+            <div class="signup_form_username">
+                <div class="form_username">
+                   <span>Username: </span>
+                </div>
+                <input type="text" class="input_username" id="input_username">
+               
+            </div>
+
+            <div class="signup_form_password">
+                <div class="form_password"> Password: </div>
+                <input type="password" class="input_password" id="input_password">
+            </div>
+
+            <div class="signup_form_retype">
+                <div class="form_retype"> Re-type Password: </div>
+                <input type="password" class="input_retype" id="input_retype">
+            </div>
+
+            <div class="button">
+                <div class="reset_button">
+                    <button id="reset">Reset</button>
+                </div>
+                <div class="submit_button">
+                    <button id="submit" onclick="checkIdentical()">Submit</button>
+                </div>
+            </div>
+        </form>
+       
+    </div>
+</body>
+</html>

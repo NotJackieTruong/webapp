@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .mult_div_section .mult_div_input_firstnumber div, .mult_div_input_secondnumber div, .mult_div_buttons div, .mult_div_result div{
+            display: inline;
+        }
+
+        .mult_div_section .mult_div_input_firstnumber, .mult_div_input_secondnumber, .mult_div_buttons{
+            margin-bottom: 10px;
+        }
+    
+    </style>
+
+    <script>
+        
+        var firstNumb
+        var secondNumb
+        var multResult, divResult
+        function multiply(){
+            firstNumb = document.getElementById("firstnumber_input").value
+            secondNumb= document.getElementById("secondnumber_input").value
+            // using Number() to convert string to number
+            multResult = Number(firstNumb)*Number(secondNumb)
+            document.getElementById("result").innerHTML= multResult
+
+        }
+
+        function divide(){
+            firstNumb = document.getElementById("firstnumber_input").value
+            secondNumb= document.getElementById("secondnumber_input").value
+            if(parseInt(secondNumb)==0){
+                window.alert("Cannot divided by zero!!!")
+            } else{
+                // using parseInt() to convert string to int
+                divResult = parseInt(firstNumb)/parseInt(secondNumb)
+                document.getElementById("result").innerHTML = divResult
+            }
+            
+
+        }
+    </script>
+</head>
+<body>
+    <div class="mult_div_section">
+        <div class="mult_div_title">
+            <h2>Multiply and Divide two numbers:</h2>
+        </div>
+
+        <div class="mult_div_input_section">
+            <div class="mult_div_input_firstnumber">
+                <div class="mult_div_input_firstnumber_title">
+                    <span>1st number: </span>
+                </div>
+                <div class="mult_div_input_firstnumber_input">
+                    <input type="text" class="firstnumber_input" id="firstnumber_input">
+                </div>
+            </div>
+
+            <div class="mult_div_input_secondnumber">
+                <div class="mult_div_input_secondnumber_title">
+                    <span>2nd number: </span>
+                </div>
+                <div class="mult_div_input_secondnumber_input">
+                    <input type="text" class="secondnumber_input" id="secondnumber_input">
+                </div>
+            </div>
+
+           
+        </div>
+        <div class="mult_div_buttons">
+            <div class="mult_buttons">
+                <button class="mult_btn" id="mult_btn" onclick="multiply()">
+                    Multiply
+                </button>
+            </div>
+
+            <div class="div_buttons">
+                <button class="div_btn" id="div_btn" onclick="divide()">
+                    Divide
+                </button>
+            </div>
+        </div>
+
+        <div class="mult_div_result">
+            <div class="result_title">
+                <span>Result is: </span>
+                <div class="result" id="result"></div>
+            </div>
+            
+        </div>
+
+
+    </div>
+</body>
+</html>

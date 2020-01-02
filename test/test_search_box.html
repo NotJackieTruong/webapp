@@ -7,17 +7,28 @@
     <title>Document</title>
     <style>
     html,body{
-        background-color: lightblue;
+        background-color: lightcoral;
         height: 100%;
         width: 100%;
         padding: 0;
         margin: 0;
     }
+    #content_container{
+        overflow: hidden;
+        position: absolute;
+       
+        width: 100%;
+        z-index: 0;
+        white-space: normal;
+    }
     
-    .widget_section{
+    div#widget_section.widget_section{
         width: 408px;
-        height: 100%;
+        height: 600px;
         background-color: lightgray;
+        z-index: 1;
+        position: relative;
+        transition: .5s;
     }
 
     .widget_section div{
@@ -34,27 +45,32 @@
         overflow: visible;
         padding: 0;
         vertical-align: baseline;
+        
     }
     .widget_section .search_section{
         height: 155px;
-        background-color: white;
+        background-color: white;;
         font-size: 15px;
-        padding: 8px 8px 16px 8px;
+        padding: 10px 10px 16px 10px;
         border-bottom: 1px solid #E8EAED;
+        
+        
     }
 
     .widget_section .search_section #search_section_singlebox{
         background-color: lightpink;
         height: 100%;
         width: 100%;
-
         white-space: normal;
+
+        
     }
     .widget_section .search_section .search_bar_section{
         background-color: #fff;
         height: 48px;
- 
         position: absolute;
+        z-index: 1;
+        border-radius: 8px;
     }
 
     /* hamburger button */
@@ -62,8 +78,7 @@
         position: absolute;
         top: 0;
         left: 0;
-
-        z-index: 1003;
+        z-index: 1;
         height: inherit;
         width: 56px;
     }
@@ -75,12 +90,12 @@
 
     /* search box */
     .widget_section .search_bar_section .search_box{
-        border-radius: 8px 8px 0 0;
+        border-radius: 8px;
         border-bottom: 1px solid #DADCE0;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 
                     0 -1px 0px rgba(0, 0, 0, 0.02);
         position: relative;
-        background: #fff;
+        background: white;
         border-radius: 8px;
         box-sizing: border-box;
         width: 392px;
@@ -105,7 +120,7 @@
         width: 100%;
         background: transparent;
         position: absolute;
-        z-index: 6;
+        z-index: 1;
         left: 0;
         outline: none;
         font-size: 15px;
@@ -133,36 +148,114 @@
 
     }
 
+    /* widget controller button */
+    .widget_pannel_controller_container{
+        position: absolute;
+        z-index: 1;
+        top: 10px;
+        right: 100%;
+    }
+
+    #widget_controller_button{
+        width: 23px;
+        height: 48px;
+        cursor: pointer;
+        background: rgba(255,255,255,0.9);
+        border-left: 1px solid #D4D4D4;
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    #map{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 600px;
+        width: 100%;
+        float: right;
+        z-index: 0;
+
+    }
+
     </style>
+    <script>
+        function initMap(){
+
+            // initialize the center
+            // var initialLat = $('.search_latitude').val();
+            // var initialLong = $('.search_longitude').val();
+            //Thua thien hue lat lng
+            // initialLat = initialLat ? initialLat : 16.467397;
+            // initialLong = initialLong ? initialLong : 107.59053259999996;
+            var LatLng = new google.maps.LatLng(16.467397, 107.59053259999996);
+
+            // create options for the map
+            var options = {
+                zoom: 6,
+                center: LatLng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                mapTypeControlOptions: {
+                    style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+                    position: google.maps.ControlPosition.RIGHT_TOP
+                },
+                zoomControl: true,
+                streetViewControl: false,}
+
+                map = new google.maps.Map(document.getElementById("map"), options);
+
+        }
+        
+     
+        function open(){
+            document.getElementById("widget_section").style.width="0px"
+
+        }
+    
+    </script>
 </head>
 <body>
-    <div class="widget_section">
-        <!-- search section container -->
-        <div class="search_section">
-            <div class="search_section_singlebox" id="search_section_singlebox">
-                <!-- search bar -->
-                <div class="search_bar_section">
-                    <!-- hamburger button -->
-                    <div class="searchbox_hamburger_container">
-                        <button id="hamburger_btn">abc</button>
-                    </div>
-                    <!-- search box -->
-                    <div class="search_box">
-                        <!-- search form -->
-                        <form action="" id="searchbox_form">
-                            <div class="input_search">
-                                <input id="input_search" type="text" placeholder="Search location">
+
+    <div id="content_container">
+        <div class="widget_section" id="widget_section">
+            <!-- search section container -->
+            <div class="search_section">
+                <div class="search_section_singlebox" id="search_section_singlebox">
+                    <!-- search bar -->
+                    <div class="search_bar_section" id="search_bar_section">
+                        <!-- hamburger button -->
+                        <div class="searchbox_hamburger_container">
+                            <button id="hamburger_btn">abc</button>
+                        </div>
+                        <!-- search box -->
+                        <div class="search_box">
+                            <!-- search form -->
+                            <form action="" id="searchbox_form">
+                                <div class="input_search">
+                                    <input id="input_search" type="text" placeholder="Search location">
+                                </div>
+                            </form>
+                            <!-- search button -->
+                            <div class="searchbox_searchbtn_container">
+                                <button id="searchbox_searchbtn">def</button>
                             </div>
-                        </form>
-                        <!-- search button -->
-                        <div class="searchbox_searchbtn_container">
-                            <button id="searchbox_searchbtn">def</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div id="pane">
+            <div class="widget_pannel_controller_container">
+                <button id="widget_controller_button">ghi</button>
+            </div>
+        </div>
+        
+       
+        <div class="map" id="map"></div>
+
     </div>
-    
+   
+    <script>
+       document.getElementById("widget_controller_button").onclick = open
+    </script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAECzjHT9kMSFcH8AIMQdDtPsXzkWuZmCQ&libraries=visualization,geometry&callback=initMap&language=vi"></script>
 </body>
 </html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        td{
+            width: 50px;
+            height: 50px;
+            text-align: center;
+        }
+    </style>
+
+    <script>
+        var name, dob, email
+        var speciality=[]
+        function showAdmin(){
+            name = document.getElementById("name").value
+            dob = document.getElementById("dob").value
+            window.alert("Name: " + name + "\n" + "Date of Birth: " + dob + "\n")
+        }
+    
+    </script>
+</head>
+<body>
+    <h1 style="text-align: center;">USTH Student Survey</h1>
+	<form>
+	  <h3>Name:</h3>
+	  <input type="text" name="name" size="100px" id="name"><br>
+	 
+	  <h3>DoB:</h3>
+	  <input type="text" name="dob" size="100px" placeholder="date/month/year" id="dob"><br>
+	  
+	  <h3>Email:</h3>
+	  <input type="email" name="email" size="100px" id="email"><br>
+	  
+	  <h3>Speciality:</h3>
+	  <input type="radio" name="Space" value="Space">Space<br>
+	  <input type="radio" name="PB" value="PB">PB<br>
+	  <input type="radio" name="WEO" value="WEO">WEO<br>
+	  <input type="radio" name="Energy" value="Energy">Energy<br>
+	  <input type="radio" name="ICT" value="ICT">ICT<br>
+	  <input type="radio" name="Food" value="Food">Food<br>
+	  <input type="radio" name="MST" value="MST">MST<br>
+	 
+	  <h3>Do you want to pursure post-graduate?</h3>
+	  <input type="radio" name="yes">Yes<br>
+	  <input type="radio" name="no">No<br>
+	  
+	  <h3>What areas you want to work after graduation:</h3>
+	  <input type="radio" name="education">Education<br>
+	  <input type="radio" name="government">Government<br>
+	  <input type="radio" name="financialandbanking">Financial and Banking<br>
+	  <input type="radio" name="research">Research<br>
+	  <input type="radio" name="construction">Construction<br>
+	  
+	  <h3>Your opinion about the study environment at USTH:</h3>
+	  <table>
+	  	<tr>
+	  		<td></td>
+	  		<td>1</td>
+	  		<td>2</td>
+	  		<td>3</td>
+	  		<td>4</td>
+	  		<td>5</td>
+	  		<td></td>
+	  	</tr>
+	  	<tr>
+	  		<td>very bad</td>
+	  		<td><input type="radio" name="1"></td>
+	  		<td><input type="radio" name="2"></td>
+	  		<td><input type="radio" name="3"></td>
+	  		<td><input type="radio" name="4"></td>
+	  		<td><input type="radio" name="5"></td>
+	  		<td>very good</td>
+	  	</tr>
+	  </table>
+
+	  <h3>Your idea to improve study environment at USTH:</h3>
+      <input type="text" name="idea" size="100px">
+      <div class="button_section">
+          <button class="button_submit" id="button_submit" onclick="showAdmin()">
+              Submit
+          </button>
+      </div>
+	</form>
+    
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html, body{
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+        .maps_inner{
+            width: 100%;
+            height: 100%;
+        }
+        .maps_inner .maps_bar_container{
+            left: 0;
+            transition:width .3s;
+            width: 320px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            background: #4285f4;
+            box-shadow: 0 2px 14px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .maps_inner .maps_bar{
+            width: 100%;
+            height: 100%;
+        }
+
+        .maps_inner .maps_bar_toggle{
+            position: absolute;
+            right: -24px;
+            top: 10px;
+            width: 24px;
+            height: 40px;
+            box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.2);
+            border-radius: 0 4px 4px 0;
+            background-color: #fff;
+            cursor: pointer;
+            z-index: 100;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .maps_inner .maps_bar_content{
+            height: 100%;
+            width: 100%;
+            flex-grow: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .maps_inner .bar_content_item{
+            left: 0;
+            right: initial;
+            transition: right 0.5s cubic-bezier(0.65,0.05.0.36,1), left 0.5s cubic-bezier(0.65, 0.05, 0.35,1);
+            z-index: 2;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .maps_inner .maps_bar_header{
+            position: relative;
+            background: #4285f4;
+            color: #fff;
+            display: flex;
+            flex-shrink: 0;
+            flex-direction: column;
+        }
+
+        .maps_inner .maps_bar_search_wrapper{
+            position: relative;
+            padding: 14px 12px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .maps_inner .maps_bar_search_inner{
+            font-size: 0;
+            position: relative;
+            flex-grow: 1;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .maps_inner .maps_bar_search_input{
+            width: 100%;
+            height: 32px;
+            line-height: 1.2;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding: 0 60px 0 12px;
+            box-sizing: border-box;
+            background: #fff;
+            border-radius: 2px;
+            border: none;
+            transition: color .3s;
+            outline: none;
+            color: #000;
+            font: 400 normal 14px/1.2;
+        }
+
+        .maps_inner .maps_bar_search_button{
+            position: absolute;
+            height: 100%;
+            top: 0;
+            right: 0;
+            display: flex;
+        }
+
+        .maps_inner .maps_bar_search_button_search{
+            box-sizing: border-box;
+            padding: 0 8px;
+            margin: 8px 0;
+            display: block;
+            cursor: pointer;
+        }
+
+        .maps_inner .maps_bar_search_button_search span{
+            width: 100%;
+            height: 100%;
+        }
+
+        .maps_inner .maps_bar_list{
+            overflow-y: auto;
+            background: #fff;
+
+        }
+
+        .maps_inner .maps_bar_list_item{
+            cursor: default;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            padding: 12px;
+            box-sizing: border-box;
+            transition: box-shadow 0.3s, background 0.3s;
+            background-color: lightblue;
+        }
+        
+        .maps_inner .maps_bar_list_item_info_item{
+            margin: 8px 0;
+            font-size: 12px;
+            color: #888;
+        }
+        .maps_inner .maps_bar_list_item:first-child{
+            margin-top: 0;
+        }
+
+        .maps_inner .maps_bar_list_item_info_title{
+            color: #000;
+            font-weight: 400;
+            font-size: 15px;
+
+        }
+
+        .maps_inner .maps_map_container{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            left: 320px;
+            transition: 0.3s;
+        }
+        .maps_inner #map{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script>
+        function close(){
+            var mapsBarContainer = document.getElementById('maps_bar_container')
+            var windowWidth = screen.width
+            var mapContainer = document.getElementsByClassName('maps_map_container')
+            console.log(mapsBarContainer.offsetWidth)
+            console.log(windowWidth)
+            if(mapsBarContainer.offsetWidth==320){
+                mapsBarContainer.style.width = '0'
+                mapContainer[0].style.width='100%'
+                mapContainer[0].style.left = '0'
+            } else if(mapsBarContainer.offsetWidth==0){
+              
+                mapContainer[0].style.width=windowWidth-320+'px'
+                mapContainer[0].style.left=320+'px'
+                mapsBarContainer.style.width = '320px'
+            }
+        }
+        
+
+        function initMap(){
+            // var initialLat = $('.search_latitude').val();
+            // var initialLong = $('.search_longitude').val();
+            // //Thua thien hue lat lng
+            // initialLat = initialLat ? initialLat : 16.467397;
+            // initialLong = initialLong ? initialLong : 107.59053259999996;
+            var LatLng = new google.maps.LatLng(16.467397, 107.59053259999996);
+
+            // create options for the map
+            var options = {
+                zoom: 6,
+                center: LatLng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                mapTypeControlOptions: {
+                    style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+                    position: google.maps.ControlPosition.RIGHT_TOP
+                },
+                zoomControl: true,
+                streetViewControl: false,
+            };
+            //create map
+            map = new google.maps.Map(document.getElementById("map"), options);
+        }
+    </script>
+</head>
+<body>
+    <div class="maps_inner">
+        <div class="maps_bar_container" id="maps_bar_container">
+            <div class="maps_bar">
+                <div class="maps_bar_toggle" id="maps_bar_toggle">
+                    <span>abc</span>
+                </div>
+                <div class="maps_bar_content">
+                    <div class="bar_list">
+                        <div class="bar_content_item">
+                            <div class="maps_bar_header">
+                                <div class="maps_bar_search_wrapper">
+                                    <div class="maps_bar_search_inner">
+                                        <input type="text" class="maps_bar_search_input" placeholder="Search">
+                                        <div class="maps_bar_search_button">
+                                            <div class="maps_bar_search_button_search">
+                                                <span>def</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- List of results -->
+                            <div class="maps_bar_list">
+                                <div class="maps_bar_list_item">
+                                    <div class="maps_bar_list_item_info">
+                                        <div class="maps_bar_list_item_info_item maps_bar_list_item_info_title">
+                                            <span id="info_title">abcxyz</span>
+                                        </div>
+                                        <div class="maps_bar_list_item_info_item maps_bar_list_item_info_address">
+                                            <span id="info_address">adlkfjakljflasdf;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="maps_map_container" id="maps_map_container">
+            <div class="map" id="map">
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script>
+        document.getElementById('maps_bar_toggle').onclick = close
+    </script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAECzjHT9kMSFcH8AIMQdDtPsXzkWuZmCQ&libraries=visualization,geometry&callback=initMap&language=vi"></script>
+
+</body>
+</html>
